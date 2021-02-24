@@ -1,8 +1,17 @@
+import firebase from 'firebase';
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBXhVc0MWmJOgYDetYGKNFcADBKzGMm1-Q",
-  authDomain: "challenge-617a5.firebaseapp.com",
-  projectId: "challenge-617a5",
-  storageBucket: "challenge-617a5.appspot.com",
-  messagingSenderId: "759630220377",
-  appId: "1:759630220377:web:7b9bf866617691b4a47548"
+  apiKey: 'AIzaSyBXhVc0MWmJOgYDetYGKNFcADBKzGMm1-Q',
+  authDomain: 'challenge-617a5.firebaseapp.com',
+  projectId: 'challenge-617a5',
+  storageBucket: 'challenge-617a5.appspot.com',
+  messagingSenderId: '759630220377',
+  appId: '1:759630220377:web:7b9bf866617691b4a47548',
 };
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+
+export { db, auth };
