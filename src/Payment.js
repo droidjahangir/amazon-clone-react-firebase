@@ -9,7 +9,8 @@ import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from './reducer';
 import axios from './axios';
 import { db } from './firebase';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import FlipMove from 'react-flip-move';
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -64,7 +65,7 @@ function Payment() {
 
     dispatch({
       // type: 'EMPTY_BASKET',
-      type: 'ADD_TO_BASKET'
+      type: 'ADD_TO_BASKET',
     });
 
     history.replace('/orders');
@@ -78,7 +79,7 @@ function Payment() {
     //   .then(({ paymentIntent }) => {
     //     // paymentIntent = just like payment confirmation
     //     console.log(paymentIntent);
-        
+
     //     db.collection('users')
     //       .doc(user?.uid)
     //       .collection('orders')

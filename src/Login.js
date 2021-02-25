@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import { auth } from './firebase';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Login() {
   const history = useHistory();
@@ -14,9 +15,15 @@ function Login() {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        history.push('/');
+        toast.success(`Login Successful, redirecting to homepage`);
+        setTimeout(function () {
+          history.push('/');
+        }, 1000);
+        // history.push('/');
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        toast.error(`unable to login, please check your credentials`);
+      });
   };
 
   const register = (e) => {
@@ -27,14 +34,21 @@ function Login() {
       .then((auth) => {
         // it successfully created a new user with email and password
         if (auth) {
-          history.push('/');
+          toast.success(`Registration Successful, redirecting to homepage`);
+          setTimeout(function () {
+            history.push('/');
+          }, 1000);
+          // history.push('/');
         }
       })
-      .catch((error) => alert(error.message));
+      .catch((error) =>
+        toast.error(`unable to login, please check your credentials`)
+      );
   };
 
   return (
     <div className="login">
+      <ToastContainer />
       <Link to="/">
         <img
           className="login__logo"

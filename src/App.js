@@ -13,6 +13,7 @@ import { useStateValue } from './StateProvider';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Footer from './Footer';
 
 
 // Stripe public publishable key not secret key
@@ -73,6 +74,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );
